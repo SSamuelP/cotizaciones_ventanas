@@ -1,4 +1,3 @@
-from ventana import Ventana
 from rich import print
 
 class Cotizacion:
