@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado de la cotización</title>
+</head>
+<body>
+    <h1>Cotización para {{ cliente.nombre }}</h1>
+
+    <h2>Información del cliente</h2>
+    <p>Email: {{ cliente.correo }}</p>
+    <p>Celular: {{ cliente.telefono }}</p>
+
+    <h2>Información de la(s) ventanas</h2>
+    <ul>
+        {% for ventana in ventanas %}
+        <li>
+            <p>Estilo de ventana: {{ ventana.estilo }}</p>
+            <p>Ancho: {{ ventana.ancho }} cm</p>
+            <p>Alto: {{ ventana.alto }} cm</p>
+            <p>Tipo de vidrio: {{ ventana.tipo_vidrio }}</p>
+            <p>Acabado: {{ ventana.acabado }}</p>
+            <p>Cantidad: {{ ventana.cantidad }}</p>
+            <p>Vidrio esmerilado: {{ 'Sí' if ventana.esmerilado else 'No' }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Total Cotización</h2>
+    <p>Total: ${{ total }}</p>
+</body>
+</html>
