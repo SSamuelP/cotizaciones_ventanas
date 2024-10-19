@@ -3,9 +3,13 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.prompt import Prompt
 
-from ventana import Ventana
-from cotizacion import Cotizacion
-from cliente import Cliente
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from app.ventana import Ventana
+from app.cotizacion import Cotizacion
+from app.cliente import Cliente
 
 console = Console()
 
