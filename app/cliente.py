@@ -1,5 +1,5 @@
 class Cliente:
-    def __init__(self, nombre, empresa, cantidad_ventanas):
+    def __init__(self, nombre, telefono, correo):
         self.nombre = nombre
-        self.empresa = empresa
-        self.cantidad_ventanas = cantidad_ventanas
+        self.telefono = telefono
+        self.correo = correo
