@@ -36,9 +36,9 @@ def crear_cotizacion():
                 raise ValueError("Tipo de vidrio inválido.")
 
             esmerilado = input("¿Esmerilado (S/N)? ").lower() == 's'
-
+            cantidad = input("¿Cuántas ventanas de este estilo va a comprar?")
             # Crear instancia de la ventana
-            ventana = Ventana(estilo, ancho, alto, tipo_vidrio, acabado, 1, esmerilado)
+            ventana = Ventana(estilo, ancho, alto, tipo_vidrio, acabado, cantidad, esmerilado)
             ventanas.append(ventana)
 
         # Crear la cotización
