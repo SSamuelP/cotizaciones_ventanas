@@ -52,7 +52,8 @@ class Ventana:
         return perimetro_total * self.precios_acabado[self.acabado]
         
     def calcular_costo_esquinas(self):
-        return 4310 * 4
+        cant_naves = len(self.estilo)
+        return (4310 * 4) * cant_naves
 
     def calcular_precio_chapa(self):
         estilo_x = self.estilo.count("X")
