@@ -38,8 +38,8 @@ class Ventana:
 
     def calcular_perimetro_nave(self):
         ancho_nave, _ = self.calcular_ancho_naves()
-        return 2 * (6 + 9)  # Ajustado a 30 cm exactos
-
+        return 2 * ((ancho_nave - 6) + (self.alto - 6))  
+    
     def calcular_costo_vidrio(self):
         area_total = self.calcular_area_nave() * self.calcular_ancho_naves()[1]
         costo_vidrio = area_total * self.precios_vidrio[self.tipo_vidrio]
