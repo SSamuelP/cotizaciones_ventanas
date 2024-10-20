@@ -34,6 +34,7 @@ def cotizacion():
     tipos_vidrio = request.form.getlist('tipo_vidrio[]')
     acabados = request.form.getlist('acabado[]')
     cantidades = request.form.getlist('cantidad[]')
+    esmerilado = request.form.getlist('esmerilado[]')
 
     for i in range(len(estilos)):
         estilo = estilos[i]
@@ -42,7 +43,7 @@ def cotizacion():
         tipo_vidrio = tipos_vidrio[i]
         acabado = acabados[i]
         cantidad = int(cantidades[i])
-        esmerilado = f'esmerilado[{i}]' in request.form
+        esmerilado = esmerilado[i].lower() == "si"
 
         ventana = Ventana(estilo, ancho, alto, tipo_vidrio, acabado, cantidad, esmerilado)
         ventanas.append(ventana)
