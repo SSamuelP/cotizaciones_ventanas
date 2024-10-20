@@ -9,6 +9,9 @@ from cotizacion import Cotizacion
 
 app = Flask(__name__)
 
+# Lista para almacenar el historial de precios
+historial_precios = []
+
 # Home page where users can input data for quotation
 @app.route('/')
 def index():
@@ -32,7 +35,6 @@ def cotizacion():
     acabados = request.form.getlist('acabado[]')
     cantidades = request.form.getlist('cantidad[]')
 
-    # Esmerilado is a checkbox, so it may not always be present
     for i in range(len(estilos)):
         estilo = estilos[i]
         ancho = float(anchos[i])
@@ -40,13 +42,11 @@ def cotizacion():
         tipo_vidrio = tipos_vidrio[i]
         acabado = acabados[i]
         cantidad = int(cantidades[i])
-
-        # Check if the esmerilado checkbox was checked for this window
         esmerilado = f'esmerilado[{i}]' in request.form
 
         ventana = Ventana(estilo, ancho, alto, tipo_vidrio, acabado, cantidad, esmerilado)
         ventanas.append(ventana)
-    
+
     # Calculating the quotation
     cotizacion = Cotizacion(fecha='2024-10-19', cliente=cliente, ventanas=ventanas)
     total = cotizacion.calcular_total()
@@ -61,17 +61,25 @@ def actualizar_precios():
         tipo_vidrio = request.form['tipo_vidrio']
         nuevo_precio_vidrio = request.form.get('nuevo_precio_vidrio')
         if nuevo_precio_vidrio:  # Si no está vacío
+            precio_anterior_vidrio = Ventana.precios_vidrio[tipo_vidrio]
             Ventana.actualizar_precio_vidrio(tipo_vidrio, float(nuevo_precio_vidrio))
+            historial_precios.append({'tipo': 'Vidrio', 'nombre': tipo_vidrio, 'anterior': precio_anterior_vidrio, 'nuevo': float(nuevo_precio_vidrio)})
 
         # Actualizar precios de los acabados solo si el campo no está vacío
         tipo_acabado = request.form['tipo_acabado']
         nuevo_precio_acabado = request.form.get('nuevo_precio_acabado')
         if nuevo_precio_acabado:  # Si no está vacío
+            precio_anterior_acabado = Ventana.precios_acabado[tipo_acabado]
             Ventana.actualizar_precio_acabado(tipo_acabado, float(nuevo_precio_acabado))
+            historial_precios.append({'tipo': 'Acabado', 'nombre': tipo_acabado, 'anterior': precio_anterior_acabado, 'nuevo': float(nuevo_precio_acabado)})
 
         return render_template('precios_exitosos.html')
 
     return render_template('actualizar_precios.html')
+
+@app.route('/historial_precios')
+def ver_historial_precios():
+    return render_template('historial_precios.html', historial=historial_precios)
 
 if __name__ == '__main__':
     app.run(debug=True)

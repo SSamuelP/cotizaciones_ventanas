@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Precios</title>
+    <style>
+        body {
+            background-color: #f9f9f9; /* Fondo gris muy claro */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #00796b; /* Color verde oscuro */
+            text-align: center; /* Centra el título */
+        }
+
+        table {
+            width: 100%; /* La tabla ocupa todo el ancho */
+            border-collapse: collapse; /* Colapsa los bordes de la tabla */
+            margin-top: 20px; /* Espaciado superior */
+            background-color: #ffffff; /* Fondo blanco */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
+        }
+
+        th, td {
+            border: 1px solid #00796b; /* Borde verde oscuro */
+            padding: 12px; /* Espaciado interno */
+            text-align: left; /* Alineación del texto a la izquierda */
+        }
+
+        th {
+            background-color: #004d40; /* Fondo verde más oscuro para el encabezado */
+            color: white; /* Color del texto del encabezado */
+        }
+
+        tr:nth-child(even) {
+            background-color: #e0f2f1; /* Color alterno para filas pares */
+        }
+
+        tr:hover {
+            background-color: #b2dfdb; /* Color más oscuro al pasar el ratón sobre la fila */
+        }
+
+        form {
+            text-align: center; /* Centramos el formulario */
+            margin-top: 20px; /* Espaciado superior */
+        }
+
+        input[type="submit"] {
+            background-color: #f57c00; /* Color naranja */
+            color: white; /* Color del texto del botón */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px; /* Bordes ligeramente redondeados */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            transition: background-color 0.3s; /* Transición suave para el color de fondo */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ef6c00; /* Color más oscuro al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+    <h1>Historial de Precios de Vidrios y Acabados</h1>
+    <table border="1">
+        <tr>
+            <th>Tipo</th>
+            <th>Nombre</th>
+            <th>Precio Anterior</th>
+            <th>Nuevo Precio</th>
+        </tr>
+        {% for cambio in historial %}
+        <tr>
+            <td>{{ cambio.tipo }}</td>
+            <td>{{ cambio.nombre }}</td>
+            <td>{{ cambio.anterior }}</td>
+            <td>{{ cambio.nuevo }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <form action="/actualizar_precios" method="GET">
+        <input type="submit" value="Actualizar precios">
+    </form>
+    <form action="/" method="GET">
+        <input type="submit" value="Volver a la Página Principal">
+    </form>
+</body>
+</html>
