@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Precios</title>
+</head>
+<style>
+    body {
+        background-color: #e0f7fa; /* Fondo azul claro */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1, h2 {
+        color: #00796b; /* Color de texto verde oscuro */
+        text-align: center; /* Centramos el texto */
+    }
+
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #00796b; /* Borde verde oscuro */
+        border-radius: 5px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    }
+
+    input[type="checkbox"] {
+        margin: 10px 0;
+    }
+
+    button {
+        background-color: #00796b; /* Color de fondo verde oscuro */
+        color: white; /* Color del texto del botón */
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px; /* Forma redondeada */
+        cursor: pointer;
+        margin-right: 10px;
+        transition: background-color 0.3s, transform 0.3s; /* Transición suave */
+    }
+
+    button:hover {
+        background-color: #004d40; /* Color más oscuro al pasar el ratón */
+        transform: scale(1.05); /* Aumenta un poco el tamaño */
+    }
+
+    input[type="submit"] {
+        background-color: #f57c00; /* Color naranja */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px; /* Forma ligeramente redondeada */
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s; /* Transición suave */
+    }
+
+    input[type="submit"]:hover {
+        background-color: #ef6c00; /* Color más oscuro al pasar el ratón */
+        transform: scale(1.05); /* Aumenta un poco el tamaño */
+    }
+
+    #ventanas-container {
+        margin-top: 20px; /* Espaciado superior */
+        padding: 10px;
+        background-color: #ffffff; /* Fondo blanco para el contenedor */
+        border-radius: 5px; /* Bordes redondeados para el contenedor */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para el contenedor */
+    }
+</style>
+<body>
+    <h1>Actualizar Precios de Vidrios y Acabados</h1>
+    <form action="/actualizar_precios" method="POST">
+        <!-- Actualizar precio del vidrio -->
+        <h2>Precio del vidrio</h2>
+        <label for="tipo_vidrio">Tipo de Vidrio:</label>
+        <select id="tipo_vidrio" name="tipo_vidrio">
+            <option value="Transparente">Transparente</option>
+            <option value="Bronce">Bronce</option>
+            <option value="Azul">Azul</option>
+        </select>
+        <br>
+        <label for="nuevo_precio_vidrio">Nuevo Precio del Vidrio (déjalo vacío si no quieres cambiarlo):</label>
+        <input type="number" id="nuevo_precio_vidrio" name="nuevo_precio_vidrio" step="0.01" placeholder="Dejar en blanco para no cambiar">
+        <br>
+
+        <!-- Actualizar precio del acabado -->
+        <h2>Precio del acabado</h2>
+        <label for="tipo_acabado">Tipo de Acabado:</label>
+        <select id="tipo_acabado" name="tipo_acabado">
+            <option value="Pulido">Pulido</option>
+            <option value="Lacado Brillante">Lacado Brillante</option>
+            <option value="Lacado Mate">Lacado Mate</option>
+            <option value="Anodizado">Anodizado</option>
+        </select>
+        <br>
+        <label for="nuevo_precio_acabado">Nuevo Precio del Acabado (déjalo vacío si no quieres cambiarlo):</label>
+        <input type="number" id="nuevo_precio_acabado" name="nuevo_precio_acabado" step="0.01" placeholder="Dejar en blanco para no cambiar">
+        <br>
+
+        <input type="submit" value="Actualizar Precios">
+    </form>
+
+    <!-- Botón para redirigir a la página principal -->
+    <form action="/" method="GET" style="margin-top: 20px;">
+        <input type="submit" value="Volver a la Página Principal">
+    </form>
+</body>
+</html>

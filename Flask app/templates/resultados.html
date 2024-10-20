@@ -5,6 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado de la cotización</title>
 </head>
+<style>
+    body {
+        background-color: #f0f4f8; /* Fondo gris claro */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #00796b; /* Color verde oscuro */
+        text-align: center; /* Centramos el título */
+    }
+
+    h2 {
+        color: #004d40; /* Color verde más oscuro */
+        margin-top: 30px; /* Espaciado superior */
+    }
+
+    p {
+        font-size: 16px;
+        color: #333; /* Color de texto gris oscuro */
+        margin: 5px 0; /* Espaciado vertical */
+    }
+
+    ul {
+        list-style-type: none; /* Sin viñetas */
+        padding: 0; /* Sin padding */
+        margin: 20px 0; /* Margen superior e inferior */
+    }
+
+    li {
+        background-color: #ffffff; /* Fondo blanco */
+        border: 1px solid #00796b; /* Borde verde oscuro */
+        border-radius: 8px; /* Bordes redondeados */
+        padding: 15px; /* Espaciado interno */
+        margin-bottom: 15px; /* Margen entre elementos de la lista */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
+    }
+
+    .total {
+        font-weight: bold;
+        font-size: 18px;
+        color: #f57c00; /* Color naranja */
+        text-align: center; /* Centramos el texto total */
+        margin-top: 20px; /* Espaciado superior */
+    }
+    input[type="submit"] {
+            background-color: #f57c00; /* Color naranja */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px; /* Forma ligeramente redondeada */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ef6c00; /* Color más oscuro al pasar el ratón */
+        }
+</style>
 <body>
     <h1>Cotización para {{ cliente.nombre }}</h1>
 
@@ -29,5 +89,11 @@
 
     <h2>Total Cotización</h2>
     <p>Total: ${{ total }}</p>
+    <form action="/actualizar_precios" method="GET" style="margin-top: 20px;">
+        <input type="submit" value="Actualizar precios">
+    </form>
+    <form action="/" method="GET" style="margin-top: 20px;">
+        <input type="submit" value="Volver a generar cotización">
+    </form>
 </body>
 </html>

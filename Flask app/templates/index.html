@@ -4,6 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cotización de vidrios</title>
+    <style>
+        body {
+            background-color: #e0f7fa; /* Fondo azul claro */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #00796b; /* Color de texto verde oscuro */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #00796b; /* Borde verde oscuro */
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        input[type="checkbox"] {
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #00796b; /* Color de fondo verde oscuro */
+            color: white; /* Color del texto del botón */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px; /* Forma redondeada */
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #004d40; /* Color más oscuro al pasar el ratón */
+        }
+
+        input[type="submit"] {
+            background-color: #f57c00; /* Color naranja */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px; /* Forma ligeramente redondeada */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ef6c00; /* Color más oscuro al pasar el ratón */
+        }
+    </style>
     <script>
         function agregarVentana() {
             const contenedor = document.getElementById('ventanas-container');
@@ -18,44 +78,48 @@
         <!-- Client Information -->
         <h2>Información de cliente</h2>
         <label for="nombre">Nombre o Razón Social:</label>
-        <input type="text" id="nombre" name="nombre" required><br>
+        <input type="text" id="nombre" name="nombre" required>
 
         <label for="telefono">Celular:</label>
-        <input type="text" id="telefono" name="telefono" required><br>
+        <input type="text" id="telefono" name="telefono" required>
 
         <label for="correo">Email:</label>
-        <input type="email" id="correo" name="correo" required><br>
+        <input type="email" id="correo" name="correo" required>
 
-        <!-- Window Information -->
         <h2>Características de la(s) ventana(s)</h2>
         <div id="ventanas-container">
             <div class="ventana">
                 <label for="estilo">Estilo de ventana (O, XO, OXO, OXXO):</label>
-                <input type="text" name="estilo[]" required><br>
+                <input type="text" name="estilo[]" required>
 
                 <label for="ancho">Ancho (cm):</label>
-                <input type="number" name="ancho[]" required><br>
+                <input type="number" name="ancho[]" required>
 
                 <label for="alto">Alto (cm):</label>
-                <input type="number" name="alto[]" required><br>
+                <input type="number" name="alto[]" required>
 
                 <label for="tipo_vidrio">Tipo de vidrio (Transparente, Bronce, Azul):</label>
-                <input type="text" name="tipo_vidrio[]" required><br>
+                <input type="text" name="tipo_vidrio[]" required>
 
                 <label for="acabado">Acabado (Pulido, Lacado Brillante, Lacado Mate, Anodizado):</label>
-                <input type="text" name="acabado[]" required><br>
+                <input type="text" name="acabado[]" required>
 
                 <label for="cantidad">Cantidad:</label>
-                <input type="number" name="cantidad[]" required><br>
+                <input type="number" name="cantidad[]" required>
 
                 <label for="esmerilado">Vidrio Esmerilado:</label>
-                <input type="checkbox" name="esmerilado[]"><br>
+                <input type="checkbox" name="esmerilado[]">
             </div>
         </div>
 
-        <button type="button" onclick="agregarVentana()">Agregar otra ventana</button><br><br>
+        <button type="button" onclick="agregarVentana()">Agregar otra ventana</button>
 
         <input type="submit" value="Hacer cotización">
+
+    </form>
+    <p>Opciones:</p>
+    <form action="/actualizar_precios" method="GET" style="margin-top: 20px;">
+        <input type="submit" value="Actualizar precios">
     </form>
 </body>
 </html>
