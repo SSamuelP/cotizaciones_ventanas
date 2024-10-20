@@ -54,6 +54,24 @@ def cotizacion():
     # Render the result page with total and breakdown
     return render_template('resultados.html', cliente=cliente, ventanas=ventanas, total=total)
 
+@app.route('/actualizar_precios', methods=['GET', 'POST'])
+def actualizar_precios():
+    if request.method == 'POST':
+        # Actualizar precios de los vidrios solo si el campo no está vacío
+        tipo_vidrio = request.form['tipo_vidrio']
+        nuevo_precio_vidrio = request.form.get('nuevo_precio_vidrio')
+        if nuevo_precio_vidrio:  # Si no está vacío
+            Ventana.actualizar_precio_vidrio(tipo_vidrio, float(nuevo_precio_vidrio))
+
+        # Actualizar precios de los acabados solo si el campo no está vacío
+        tipo_acabado = request.form['tipo_acabado']
+        nuevo_precio_acabado = request.form.get('nuevo_precio_acabado')
+        if nuevo_precio_acabado:  # Si no está vacío
+            Ventana.actualizar_precio_acabado(tipo_acabado, float(nuevo_precio_acabado))
+
+        return render_template('precios_exitosos.html')
+
+    return render_template('actualizar_precios.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
