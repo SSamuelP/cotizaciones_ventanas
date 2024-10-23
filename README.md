@@ -11,3 +11,14 @@ Este proyecto consiste en el desarrollo de un sistema de cotización de ventanas
 - Aplicación de descuentos para pedidos superiores a 100 ventanas.
 - Generación de cotización detallada.
 
+# **Instalación**
+Para poder instalar y ejecutar este proyecto hay que escr4ibir estos comandos en la consola:
+```bash
+git clone https://github.com/SSamuelP/cotizaciones_ventanas.git
+cd cotizaciones_ventanas
+```
+Con esto ya tendremos el proyecto descargado en el computador y ahora hará falta descargar las librerías de las que hace uso el proyecto:
+```bash
+pip requirements.txt -r
+```
+Ya con esta instalación tenemos las librerías necesarias como ```rich``` y ```flask```, las cuales son necesarias para poder ejecutar las partes de nuestro proyeto.
