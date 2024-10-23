@@ -19,6 +19,6 @@ cd cotizaciones_ventanas
 ```
 Con esto ya tendremos el proyecto descargado en el computador y ahora hará falta descargar las librerías de las que hace uso el proyecto:
 ```bash
-pip requirements.txt -r
+pip install requirements.txt -r
 ```
 Ya con esta instalación tenemos las librerías necesarias como ```rich``` y ```flask```, las cuales son necesarias para poder ejecutar las partes de nuestro proyeto.
